@@ -1,0 +1,3 @@
+domain: worklow-controller.amadeus.net
+repo: github.com/amadeusitgroup/workflow-controller
+version: "2"
