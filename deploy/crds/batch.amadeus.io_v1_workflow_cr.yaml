@@ -1,0 +1,7 @@
+apiVersion: batch.amadeus.io/v1
+kind: Workflow
+metadata:
+  name: example-workflow
+spec:
+  # Add fields here
+  size: 3
