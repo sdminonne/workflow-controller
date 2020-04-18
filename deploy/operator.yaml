@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workflow-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: workflow-controller
+  template:
+    metadata:
+      labels:
+        name: workflow-controller
+    spec:
+      serviceAccountName: workflow-controller
+      containers:
+        - name: workflow-controller
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - workflow-controller
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "workflow-controller"
